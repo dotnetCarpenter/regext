@@ -4,8 +4,6 @@
     <meta charset="UTF-8"/>
     <title>Regex Tooling</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
-    <script src="regex.js"></script>
-    <script src="md/md.min.js"></script>
 </head>
 <body>
     <section class="abstract">
@@ -35,14 +33,10 @@
       <h2>Output</h2>
       <samp id="result1"></samp>
     </section>
-    <pre id="md"></pre>
+    <script src="regex.js"></script>
     <script>
-        (function() {
-            var d = document
-            var a = d.querySelectorAll('.abstract')[0];
-            var s = d.querySelectorAll('.synopsis')[0];
-            d.getElementById('md').innerHTML = d.write( md(a.innerHTML+s.innerHTML) )
-        }())
+        var testCase = new ns.regex(document.getElementById('result1'))
+        document.getElementById('test1').addEventListener("keyup", function(e) { testCase.patterns(this.innerHTML) }, false)
     </script>
 </body>
 </html>
