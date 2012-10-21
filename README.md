@@ -5,4 +5,4 @@ An idea to create easy regex authoring and debugging.
 * Show patterns in input text
 * Make transformations a one-step process
   1. Accept many kind of input formats
-  1. 1. Output text
+  1. Output text
