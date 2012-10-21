@@ -22,6 +22,7 @@
           <li>Output text</li>
         </ol>
       </li>
+      <li>Should support UTF-8 (65.535 code points)</li>
     </ul>
     </section>  
       
@@ -35,8 +36,15 @@
     </section>
     <script src="regex.js"></script>
     <script>
+        var testInput = document.getElementById('test1')
         var testCase = new ns.regex(document.getElementById('result1'))
-        document.getElementById('test1').addEventListener("keyup", function(e) { testCase.patterns(this.innerHTML) }, false)
+        testInput.addEventListener("focus", function(e) {
+            if(!this.defaultValue)
+                this.defaultValue = this.innerHTML
+            if(this.defaultValue === this.innerHTML)
+                this.innerHTML = ''
+        }, false)
+        testInput.addEventListener("keyup", function(e) { testCase.patterns(this.innerHTML) }, false)
     </script>
 </body>
 </html>
