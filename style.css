@@ -1,0 +1,19 @@
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box }
+h1 { font-size:1.4em; }
+h2 { font-size:1.2em; }
+p,li { font-size: 1em }
+h1,h2,p,li {
+  line-height:1em;
+  margin:0.6em;
+  padding:0;
+}
+ul { margin:0; }
+section {
+  vertical-align: top;
+  display: inline-block;
+  width: 40%;
+}
+section:first-of-type { margin: 0 1em 0 0; }
+kbd, samp{ width:100%;}
+kbd[contenteditable]{ color: hsla(0, 0%, 50%, 1); }
+kbd[contenteditable]:focus{ color: hsla(0, 0%, 0%, 1); }

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Regex Tooling</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script src="regex.js"></script>
+    <script src="md/md.min.js"></script>
+</head>
+<body>
+    <section class="abstract">
+    <h1>RegEx Tooling</h1>
+    <p>An idea to create easy regex authoring and debugging.
+    </p>
+    </section>
+    <section class="synopsis">
+    <h2>Synopsis</h2>
+    <ul>
+      <li>Show immidiate response to author</li>
+      <li>Show patterns in input text</li>
+      <li>Make transformations a one-step process
+        <ol>
+          <li>Accept many kind of input formats</li>
+          <li>Output text</li>
+        </ol>
+      </li>
+    </ul>
+    </section>  
+      
+    <section>
+      <h2>Test Data</h2>
+      <kbd id="test1" contenteditable="true">Enter input string here</kbd>
+    </section>
+    <section class="results">
+      <h2>Output</h2>
+      <samp id="result1"></samp>
+    </section>
+    <pre id="md"></pre>
+    <script>
+        (function() {
+            var d = document
+            var a = d.querySelectorAll('.abstract')[0];
+            var s = d.querySelectorAll('.synopsis')[0];
+            d.getElementById('md').innerHTML = d.write( md(a.innerHTML+s.innerHTML) )
+        }())
+    </script>
+</body>
+</html>
