@@ -9,11 +9,14 @@ h1,h2,p,li {
 }
 ul { margin:0; }
 section {
-  vertical-align: top;
-  display: inline-block;
-  width: 40%;
+    display: inline-block;
+    vertical-align: top;
+    width: 40%;
 }
 section:first-of-type { margin: 0 1em 0 0; }
-kbd, samp{ width:100%;}
+kbd, samp {
+    display: block;
+    width:100%;
+}
 kbd[contenteditable]{ color: hsla(0, 0%, 50%, 1); }
 kbd[contenteditable]:focus{ color: hsla(0, 0%, 0%, 1); }
