@@ -28,31 +28,35 @@ ns.list = function(map) {
     return Object.keys(map).map(function(el, i) {
         var list=new Array(2); list[0]=el; list[1]=map[el]
         return list
-        //return [i] = new Array(2), [i][0]=el, [i][1]=map[el], [i]
     })
 }
 ns.regex = function(output) {
-    var escapedChars = new ns.list({
+    this.escapedChars = new ns.list({
         '\\d': /\d/
        ,'\\D': /\D/
        ,'\\w': /\w/
        ,'\\W': /\W/
        ,'\\s': /\s/
+       ,'\\S': /\S/
        ,'\\f': /\f/
        ,'\\r': /\r/
        ,'\\n': /\n/
+       ,'\\t': /\t/
+       ,'\\v': /\v/
+       ,'\\0': /\0/
+       ,'[\\b]': /[\b]/
     })
     this.output = output
-    generate(escapedChars)
-    console.dir(escapedChars)
+    generate(this.escapedChars)
+    console.dir(this.escapedChars)
     
-    function generate(set) {
-        var charCode = 0, char
+    function generate(set) { /*TODO: https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String/charCodeAt*/
+        var charCode = 0, char = ''
         while(charCode <= 65535) {
-            set.forEach(function(item, i) {
-                char = String.fromCharCode(charCode)
+            char = String.fromCharCode(charCode)
+            set.forEach(function(item, i) {                
                 if(item[1].test(char))
-                    item.push(char)
+                    item.push(char.charCodeAt(0))
             })
             ++charCode
         }
@@ -60,9 +64,14 @@ ns.regex = function(output) {
     function join(array) { array.join('') }
 }
 ns.regex.prototype.patterns = function(input) {
-    
+    var found = this.escapedChars.filter(function(charclass) {
+        return charclass.indexOf( input.charCodeAt(0), 2 ) !== -1
+    })
+    this.output.innerHTML = found.length === 0 ? "NOT FOUND" : found.reduce(function(prev, curr) {
+        return (prev instanceof Array ? prev[0] : prev) + ', ' + curr[0]
+    })
     
   //  var char = String.fromCharCode(input.keyCode);
-console.log(input)
-    this.output.innerHTML = input;
+    //console.log(input)
+    //this.output.innerHTML = input;
 }
